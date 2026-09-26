@@ -17,9 +17,14 @@
     "format:check": "prettier --check .",
     "prisma:generate": "pnpm --filter @evidencefit/api prisma:generate",
     "prisma:migrate": "pnpm --filter @evidencefit/api prisma:migrate",
+    "smoke:neon-auth": "pnpm --filter @evidencefit/api smoke:neon-auth",
     "smoke:production": "node scripts/smoke-production.mjs"
   },
   "devDependencies": {
     "prettier": "3.9.9"
+  },
+  "dependencies": {
+    "@neon/config": "^1.7.3",
+    "@neon/env": "^1.4.4"
   }
 }

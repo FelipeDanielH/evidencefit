@@ -11,7 +11,7 @@ import {
   JobRequirementsExtractionSchema,
 } from './schemas/job-requirements.schema.js';
 
-config({ path: ['.env', '../../.env'], quiet: true });
+config({ path: ['.env.local', '.env', '../../.env.local', '../../.env'], quiet: true });
 
 const mongooseImports = process.env.MONGODB_URI?.trim()
   ? [

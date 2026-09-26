@@ -11,7 +11,8 @@
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --runInBand",
     "typecheck": "tsc --noEmit",
     "prisma:generate": "prisma generate --config prisma.config.ts",
-    "prisma:migrate": "prisma migrate deploy --config prisma.config.ts"
+    "prisma:migrate": "prisma migrate deploy --config prisma.config.ts",
+    "smoke:neon-auth": "node scripts/smoke-neon-auth.mjs"
   },
   "dependencies": {
     "@nestjs/common": "12.1.0",

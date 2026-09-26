@@ -188,22 +188,27 @@ utilizarás y no guardes archivos `.env` en Git.
 
 ## Variables de entorno
 
-| Variable                 | Requerida para    | Descripción                                                          |
-| ------------------------ | ----------------- | -------------------------------------------------------------------- |
-| `API_PORT`               | API               | Puerto; por defecto `3001`.                                          |
-| `PORT`                   | Hosting backend   | Puerto inyectado por Render; tiene precedencia si no hay `API_PORT`. |
-| `WEB_ORIGIN`             | API               | Origen CORS del frontend; por defecto `http://localhost:3000`.       |
-| `API_URL`                | Next.js server    | Base REST privada; localmente `http://localhost:3001/api`.           |
-| `DATABASE_URL`           | Acceso PostgreSQL | URL de conexión de Neon/PostgreSQL.                                  |
-| `MONGODB_URI`            | Acceso MongoDB    | URI de MongoDB Atlas.                                                |
-| `JWT_SECRET`             | Arranque del API  | Secreto largo generado por el desarrollador.                         |
-| `JWT_EXPIRES_IN_SECONDS` | JWT               | Duración del token; por defecto `3600`.                              |
-| `OPENROUTER_API_KEY`     | Llamadas de IA    | API key propia de OpenRouter.                                        |
-| `OPENROUTER_MODEL`       | Llamadas de IA    | Identificador de un modelo gratuito permitido para v0.1.             |
-| `OPENROUTER_TIMEOUT_MS`  | Llamadas de IA    | Timeout; por defecto `15000`.                                        |
-| `SMOKE_API_URL`          | Smoke manual      | Base pública del API desplegado, terminada en `/api`.                |
-| `SMOKE_EMAIL`            | Smoke manual      | Email sintético para el smoke test.                                  |
-| `SMOKE_PASSWORD`         | Smoke manual      | Password no reutilizado para el smoke test.                          |
+| Variable                 | Requerida para     | Descripción                                                          |
+| ------------------------ | ------------------ | -------------------------------------------------------------------- |
+| `API_PORT`               | API                | Puerto; por defecto `3001`.                                          |
+| `PORT`                   | Hosting backend    | Puerto inyectado por Render; tiene precedencia si no hay `API_PORT`. |
+| `WEB_ORIGIN`             | API                | Origen CORS del frontend; por defecto `http://localhost:3000`.       |
+| `API_URL`                | Next.js server     | Base REST privada; localmente `http://localhost:3001/api`.           |
+| `DATABASE_URL`           | Runtime PostgreSQL | URL pooled de Neon usada por NestJS.                                 |
+| `DATABASE_URL_UNPOOLED`  | Migraciones Prisma | URL directa de Neon usada por Prisma CLI.                            |
+| `MONGODB_URI`            | Acceso MongoDB     | URI de MongoDB Atlas.                                                |
+| `JWT_SECRET`             | Arranque del API   | Secreto largo generado por el desarrollador.                         |
+| `JWT_EXPIRES_IN_SECONDS` | JWT                | Duración del token; por defecto `3600`.                              |
+| `OPENROUTER_API_KEY`     | Llamadas de IA     | API key propia de OpenRouter.                                        |
+| `OPENROUTER_MODEL`       | Llamadas de IA     | Identificador de un modelo gratuito permitido para v0.1.             |
+| `OPENROUTER_TIMEOUT_MS`  | Llamadas de IA     | Timeout; por defecto `15000`.                                        |
+| `SMOKE_API_URL`          | Smoke manual       | Base pública del API desplegado, terminada en `/api`.                |
+| `SMOKE_EMAIL`            | Smoke manual       | Email sintético para el smoke test.                                  |
+| `SMOKE_PASSWORD`         | Smoke manual       | Password no reutilizado para el smoke test.                          |
+
+En Neon, `DATABASE_URL` debe apuntar al hostname pooled (`-pooler`) y
+`DATABASE_URL_UNPOOLED` a la conexión directa. Prisma usa la segunda para migraciones y NestJS usa la
+primera durante la ejecución. Ambas requieren SSL según las URLs entregadas por Neon.
 
 El API puede iniciar sin conexiones a PostgreSQL, MongoDB u OpenRouter para servir health checks.
 Las rutas de vacantes, candidatos y evaluaciones requieren `DATABASE_URL`; las extracciones y el

@@ -14,7 +14,7 @@ import { JobsModule } from './jobs/jobs.module.js';
   imports: [
     ConfigModule.forRoot({
       cache: true,
-      envFilePath: ['.env', '../../.env'],
+      envFilePath: ['.env.local', '.env', '../../.env.local', '../../.env'],
       expandVariables: true,
       isGlobal: true,
     }),

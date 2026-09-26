@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { config } from 'dotenv';
 import { PrismaService } from './prisma.service.js';
 
-config({ path: ['.env', '../../.env'], quiet: true });
+config({ path: ['.env.local', '.env', '../../.env.local', '../../.env'], quiet: true });
 
 function getMongooseImports(): DynamicModule[] {
   if (!process.env.MONGODB_URI?.trim()) {
