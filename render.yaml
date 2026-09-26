@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     region: oregon
-    buildCommand: corepack enable && corepack prepare pnpm@11.3.0 --activate && pnpm install --frozen-lockfile && pnpm prisma:generate && pnpm build
+    buildCommand: corepack enable && corepack prepare pnpm@11.3.0 --activate && pnpm install --frozen-lockfile && pnpm prisma:generate && pnpm --filter @evidencefit/api build
     startCommand: pnpm prisma:migrate && pnpm --filter @evidencefit/api start
     healthCheckPath: /api/health
     envVars:
