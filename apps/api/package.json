@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "prisma:generate": "prisma generate --config prisma.config.ts",
     "prisma:migrate": "prisma migrate deploy --config prisma.config.ts",
+    "smoke:atlas": "pnpm build && node scripts/smoke-atlas.mjs",
     "smoke:neon-auth": "node scripts/smoke-neon-auth.mjs"
   },
   "dependencies": {

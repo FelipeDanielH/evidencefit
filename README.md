@@ -197,6 +197,7 @@ utilizarás y no guardes archivos `.env` en Git.
 | `DATABASE_URL`           | Runtime PostgreSQL | URL pooled de Neon usada por NestJS.                                 |
 | `DATABASE_URL_UNPOOLED`  | Migraciones Prisma | URL directa de Neon usada por Prisma CLI.                            |
 | `MONGODB_URI`            | Acceso MongoDB     | URI de MongoDB Atlas.                                                |
+| `MONGODB_DB_NAME`        | Acceso MongoDB     | Base documental; por defecto `evidencefit`.                          |
 | `JWT_SECRET`             | Arranque del API   | Secreto largo generado por el desarrollador.                         |
 | `JWT_EXPIRES_IN_SECONDS` | JWT                | Duración del token; por defecto `3600`.                              |
 | `OPENROUTER_API_KEY`     | Llamadas de IA     | API key propia de OpenRouter.                                        |
@@ -209,6 +210,10 @@ utilizarás y no guardes archivos `.env` en Git.
 En Neon, `DATABASE_URL` debe apuntar al hostname pooled (`-pooler`) y
 `DATABASE_URL_UNPOOLED` a la conexión directa. Prisma usa la segunda para migraciones y NestJS usa la
 primera durante la ejecución. Ambas requieren SSL según las URLs entregadas por Neon.
+
+MongoDB Atlas usa la base indicada por `MONGODB_DB_NAME`, incluso si `MONGODB_URI` no incluye una
+ruta de base de datos. Las tres colecciones documentales son `job_requirement_extractions`,
+`candidate_evidence_extractions` y `evaluation_results`.
 
 El API puede iniciar sin conexiones a PostgreSQL, MongoDB u OpenRouter para servir health checks.
 Las rutas de vacantes, candidatos y evaluaciones requieren `DATABASE_URL`; las extracciones y el

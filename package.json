@@ -17,6 +17,7 @@
     "format:check": "prettier --check .",
     "prisma:generate": "pnpm --filter @evidencefit/api prisma:generate",
     "prisma:migrate": "pnpm --filter @evidencefit/api prisma:migrate",
+    "smoke:atlas": "pnpm --filter @evidencefit/api smoke:atlas",
     "smoke:neon-auth": "pnpm --filter @evidencefit/api smoke:neon-auth",
     "smoke:production": "node scripts/smoke-production.mjs"
   },

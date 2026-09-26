@@ -16,6 +16,7 @@ function getMongooseImports(): DynamicModule[] {
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         connectTimeoutMS: 5_000,
+        dbName: configService.get<string>('MONGODB_DB_NAME', 'evidencefit'),
         serverSelectionTimeoutMS: 5_000,
         uri: configService.getOrThrow<string>('MONGODB_URI'),
       }),
