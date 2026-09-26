@@ -18,7 +18,9 @@
     "prisma:generate": "pnpm --filter @evidencefit/api prisma:generate",
     "prisma:migrate": "pnpm --filter @evidencefit/api prisma:migrate",
     "smoke:atlas": "pnpm --filter @evidencefit/api smoke:atlas",
+    "smoke:e2e:real": "pnpm --filter @evidencefit/api smoke:e2e:real",
     "smoke:neon-auth": "pnpm --filter @evidencefit/api smoke:neon-auth",
+    "smoke:openrouter": "pnpm --filter @evidencefit/api smoke:openrouter",
     "smoke:production": "node scripts/smoke-production.mjs"
   },
   "devDependencies": {

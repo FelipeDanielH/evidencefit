@@ -201,8 +201,8 @@ utilizarás y no guardes archivos `.env` en Git.
 | `JWT_SECRET`             | Arranque del API   | Secreto largo generado por el desarrollador.                         |
 | `JWT_EXPIRES_IN_SECONDS` | JWT                | Duración del token; por defecto `3600`.                              |
 | `OPENROUTER_API_KEY`     | Llamadas de IA     | API key propia de OpenRouter.                                        |
-| `OPENROUTER_MODEL`       | Llamadas de IA     | Identificador de un modelo gratuito permitido para v0.1.             |
-| `OPENROUTER_TIMEOUT_MS`  | Llamadas de IA     | Timeout; por defecto `15000`.                                        |
+| `OPENROUTER_MODEL`       | Llamadas de IA     | `openrouter/free` o un modelo específico terminado en `:free`.       |
+| `OPENROUTER_TIMEOUT_MS`  | Llamadas de IA     | Timeout; por defecto `60000` para tolerar el router gratuito.        |
 | `SMOKE_API_URL`          | Smoke manual       | Base pública del API desplegado, terminada en `/api`.                |
 | `SMOKE_EMAIL`            | Smoke manual       | Email sintético para el smoke test.                                  |
 | `SMOKE_PASSWORD`         | Smoke manual       | Password no reutilizado para el smoke test.                          |
@@ -218,8 +218,13 @@ ruta de base de datos. Las tres colecciones documentales son `job_requirement_ex
 El API puede iniciar sin conexiones a PostgreSQL, MongoDB u OpenRouter para servir health checks.
 Las rutas de vacantes, candidatos y evaluaciones requieren `DATABASE_URL`; las extracciones y el
 detalle de evaluación requieren además `MONGODB_URI`,
-`OPENROUTER_API_KEY` y un `OPENROUTER_MODEL` gratuito, terminado en `:free`, compatible con structured
-outputs. `JWT_SECRET` sigue siendo obligatoria porque no se incluye un secreto inseguro por defecto.
+`OPENROUTER_API_KEY` y `OPENROUTER_MODEL=openrouter/free` —o un modelo gratuito específico terminado
+en `:free`— compatible con structured outputs. `JWT_SECRET` sigue siendo obligatoria porque no se
+incluye un secreto inseguro por defecto.
+
+Para v0.1 se validó `dots-studio/dots-3-note-preview:free` con `json_schema` estricto. El router
+`openrouter/free` también acepta el request, pero puede seleccionar modelos con comportamiento
+semántico desigual. La disponibilidad de modelos gratuitos depende de OpenRouter.
 
 ## Datos demo sintéticos
 
