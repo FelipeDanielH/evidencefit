@@ -1,0 +1,30 @@
+{
+  "job": {
+    "title": "Full Stack Developer — Demo sintética",
+    "description": "Buscamos una persona Full Stack. Es obligatorio contar con NestJS nivel avanzado y al menos 3 años de experiencia. PostgreSQL es obligatorio. Se considera deseable experiencia práctica con React. Docker es un requisito deseable. Inglés B2 es deseable."
+  },
+  "candidates": [
+    {
+      "name": "Candidata Sintética Aurora",
+      "profile": "good_match",
+      "cvText": "CV SINTÉTICO. Experiencia profesional: durante 4 años desarrollé APIs REST con NestJS y PostgreSQL. En mi rol más reciente desplegué servicios con Docker. Proyecto: construí un panel administrativo utilizando React. Idiomas: inglés B2."
+    },
+    {
+      "name": "Candidato Sintético Boreal",
+      "profile": "partial_match",
+      "cvText": "CV SINTÉTICO. Proyecto personal: construí una API para reservas utilizando NestJS. Skills: PostgreSQL, React. Educación: curso introductorio de Docker."
+    },
+    {
+      "name": "Candidata Sintética Cobalto",
+      "profile": "insufficient_information",
+      "cvText": "CV SINTÉTICO. Skills: NestJS. Mencioné PostgreSQL en una actividad cuyo contexto y alcance no están especificados. Educación: fundamentos generales de desarrollo web."
+    }
+  ],
+  "coverageIntent": {
+    "strong": "Evidencia profesional explícita con años o contexto directo.",
+    "medium": "Proyecto práctico sin todos los atributos exigidos por la vacante.",
+    "weak": "Skill mencionada solamente en una lista o formación introductoria.",
+    "unknown": "Mención cuyo contexto no permite determinar el nivel de evidencia.",
+    "not_found": "Requisito sin evidencia con el mismo nombre normalizado."
+  }
+}

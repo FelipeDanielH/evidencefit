@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: evidencefit-api
+    runtime: node
+    plan: free
+    buildCommand: corepack enable && corepack prepare pnpm@11.3.0 --activate && pnpm install --frozen-lockfile && pnpm prisma:generate && pnpm build
+    startCommand: pnpm prisma:migrate && pnpm --filter @evidencefit/api start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: WEB_ORIGIN
+        value: https://evidencefit.felipehenriquez.dev
+      - key: DATABASE_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN_SECONDS
+        value: 3600
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        sync: false
+      - key: OPENROUTER_TIMEOUT_MS
+        value: 30000

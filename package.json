@@ -1,0 +1,25 @@
+{
+  "name": "evidencefit",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.3.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @evidencefit/web --filter @evidencefit/api dev",
+    "build": "pnpm -r --if-present build",
+    "lint": "pnpm -r --if-present lint",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prisma:generate": "pnpm --filter @evidencefit/api prisma:generate",
+    "prisma:migrate": "pnpm --filter @evidencefit/api prisma:migrate",
+    "smoke:production": "node scripts/smoke-production.mjs"
+  },
+  "devDependencies": {
+    "prettier": "3.9.9"
+  }
+}

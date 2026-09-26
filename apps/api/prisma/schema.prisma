@@ -1,0 +1,56 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Job {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  evaluations Evaluation[]
+
+  @@map("jobs")
+}
+
+model Candidate {
+  id        String   @id @default(cuid())
+  name      String
+  cvText    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  evaluations Evaluation[]
+
+  @@map("candidates")
+}
+
+model Evaluation {
+  id          String    @id @default(cuid())
+  jobId       String
+  candidateId String
+  score       Float?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  job         Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@index([jobId, candidateId])
+  @@index([candidateId])
+  @@map("evaluations")
+}
